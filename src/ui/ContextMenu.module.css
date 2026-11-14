@@ -1,0 +1,49 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+}
+
+.menu {
+  position: fixed;
+  z-index: 201;
+  min-width: 196px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  box-shadow: 0 12px 30px var(--shadow-lg);
+  padding: 5px;
+  font-size: 13px;
+  color: var(--fg-body);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 8px;
+  border-radius: 5px;
+  text-align: left;
+  color: inherit;
+}
+.item:hover:not(:disabled) {
+  background: var(--hover);
+}
+.item:disabled {
+  color: var(--fg-faint);
+  cursor: default;
+}
+
+.danger {
+  color: var(--danger);
+}
+.danger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+}
+
+.rule {
+  height: 1px;
+  background: var(--line);
+  margin: 4px 6px;
+}

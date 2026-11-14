@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blocks &amp; Media</title>
+  <meta name="aprinote-id" content="pg_dm04">
+  <meta name="aprinote-edited" content="2026-09-04T11:30:00Z">
+  <link rel="stylesheet" href="../_vault/site.css">
+</head>
+<body><article class="aprinote-page">
+<h1>Blocks &amp; Media</h1>
+
+<p class="lead">The blocks that are more than a paragraph: callouts that hold other blocks, images with constraints, embeds, and the gutter that moves them all around.</p>
+
+<h2>Callouts hold blocks</h2>
+
+<div class="callout">A callout of plain inline text stays exactly that — a <code>&lt;div class="callout"&gt;</code> with words in it.</div>
+
+<div class="callout" style="background:#e6ddfa">
+  <p><strong>Press Enter inside one</strong> and it comes into block form around the caret.</p>
+  <ul>
+    <li>A list can live in here</li>
+    <li>So can a heading, an image, or a table</li>
+  </ul>
+  <p>Its background is its own — set from the inspector, written as an inline <code>style</code>, and independent of the vault stylesheet's default.</p>
+</div>
+
+<div class="callout" style="background:#fbe4d5">
+  <p>Drop a block onto a callout and it moves <em>into</em> it. Drag it out by aiming at a gap between two blocks in the document.</p>
+</div>
+
+<h2>Columns</h2>
+
+<p>Type <code>/columns</code> and pick two or three to lay blocks side by side. A layout is a <code>&lt;div class="columns"&gt;</code> holding one <code>&lt;div class="column"&gt;</code> per column, and each column holds blocks just like a callout. On a phone-width screen they stack.</p>
+
+<div class="columns">
+  <div class="column">
+    <h3>Before</h3>
+    <p>Each column is its own little document. Enter adds a line inside it; Enter on an empty last line steps out below the whole layout.</p>
+    <ul>
+      <li>Lists work</li>
+      <li>So do headings</li>
+    </ul>
+  </div>
+  <div class="column">
+    <h3>After</h3>
+    <p>Backspace at the top of a column stops there, so one column never spills into its neighbour.</p>
+    <div class="callout" style="background:#d9efe6">A callout can sit in a column, too.</div>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <figure>
+      <img src="../_assets/demo-photo.svg" alt="A placeholder image in the first of three columns" loading="lazy">
+      <figcaption>One</figcaption>
+    </figure>
+    <p>Each column is a container, so a figure and its text travel together.</p>
+  </div>
+  <div class="column">
+    <figure>
+      <img src="../_assets/demo-photo.svg" alt="A placeholder image in the second of three columns" loading="lazy">
+      <figcaption>Two</figcaption>
+    </figure>
+    <p>Images fill their column and scale with it.</p>
+  </div>
+  <div class="column">
+    <figure>
+      <img src="../_assets/demo-photo.svg" alt="A placeholder image in the third of three columns" loading="lazy">
+      <figcaption>Three</figcaption>
+    </figure>
+    <p>Switch preview to 390 and the three of these stack.</p>
+  </div>
+</div>
+
+<p>With the caret in a layout, the inspector sets how many columns it has. Taking columns away moves their blocks into the last one kept, and choosing <strong>1</strong> dissolves the layout back into ordinary blocks. Drag a column's handle to reorder it, or drop a block between two columns to make a new one.</p>
+
+<h2>Images</h2>
+
+<p>An image is a <code>&lt;figure&gt;</code> holding an <code>&lt;img&gt;</code> and a <code>&lt;figcaption&gt;</code>. Drag a file onto the page and it lands in <code>_assets/</code> with a readable name; the <code>src</code> is written at the page's own depth, so this page — one folder deep — refers to <code>../_assets/…</code>.</p>
+
+<figure style="max-width:460px">
+  <img src="../_assets/demo-photo.svg" alt="A placeholder gradient standing in for a photograph" loading="lazy">
+  <figcaption>Constrained to 460px, left-aligned. Select the image and the inspector offers max-width, aspect ratio and alignment.</figcaption>
+</figure>
+
+<figure style="max-width:300px;margin-inline:auto">
+  <img src="../_assets/demo-photo.svg" alt="The same placeholder, centred and cropped to a square" style="aspect-ratio:1/1;object-fit:cover" loading="lazy">
+  <figcaption>The same file at 300px, centred with <code>margin-inline:auto</code> and cropped square with <code>aspect-ratio</code>.</figcaption>
+</figure>
+
+<div class="callout">Deleting a page never deletes an asset — any image may be referenced from anywhere. Settings has a sweep for the ones nothing points at any more, and this vault ships one on purpose: <code>_assets/unused-sketch.svg</code>.</div>
+
+<h2>Embeds</h2>
+
+<p>An embed is an <code>&lt;iframe&gt;</code> in a figure. While you are editing it is inert — the URL is parked in <code>data-aprinote-src</code> and the frame is never fetched, so a page full of embeds stays fast and cannot steal the caret. Preview renders the real thing.</p>
+
+<figure class="embed">
+  <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-0.13%2C51.50%2C-0.11%2C51.51&amp;layer=mapnik" loading="lazy" referrerpolicy="no-referrer" allowfullscreen></iframe>
+</figure>
+
+<h2>Quotes, code and dividers</h2>
+
+<blockquote>A blockquote is a <code>&lt;blockquote&gt;</code>. Because pages are plain HTML documents, anything valid can live in one.</blockquote>
+
+<pre><code>// A code block is a &lt;pre&gt;&lt;code&gt; — never formatted, never linkified.
+const vault = await open('~/notes')
+&lt;a data-aprinote="pg_dm00"&gt;stays literal in here&lt;/a&gt;</code></pre>
+
+<hr>
+
+<p>Above this paragraph is an <code>&lt;hr&gt;</code>. Type <code>--- </code> on an empty line to get one.</p>
+
+<h2>Moving blocks</h2>
+
+<ol>
+  <li>Hover the left gutter — every block gets a handle</li>
+  <li>Drag it to a gap between two blocks, or onto a callout to drop it inside</li>
+  <li>Select several blocks first and the handle drags the whole set, in document order</li>
+</ol>
+
+<p>The full catalogue is over in the <a data-aprinote="pg_dm05" href="../reference/block-gallery.html">Block Gallery</a>; tables get a page of their own in <a data-aprinote="pg_dm06" href="../reference/tables.html">Tables</a>.</p>
+</article></body>
+</html>

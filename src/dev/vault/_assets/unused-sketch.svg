@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240" role="img" aria-label="An asset no page references">
+  <rect width="400" height="240" rx="8" fill="#f0f0ef"/>
+  <rect x="4.5" y="4.5" width="391" height="231" rx="6" fill="none" stroke="#c9c9c6" stroke-dasharray="6 5"/>
+  <text x="200" y="112" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#6b6b6b">Orphan asset</text>
+  <text x="200" y="140" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#9a9a9a">no page references this file</text>
+</svg>

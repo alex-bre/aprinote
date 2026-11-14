@@ -1,0 +1,83 @@
+.pane {
+  flex: 1 1 0%;
+  min-width: 340px;
+  max-width: 52%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--bg-source);
+  border-left: 1px solid var(--line);
+}
+
+.head {
+  flex: none;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 11px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11.5px;
+  color: var(--fg-muted);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  padding: 2px;
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.mode {
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--fg-dim);
+}
+.mode.on {
+  background: var(--bg-panel);
+  color: var(--accent-deep);
+  box-shadow: 0 1px 2px var(--shadow-sm);
+}
+
+.sync {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ok);
+  font-size: 11px;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* CodeMirror owns its own scrolling; this is only the box it fills. */
+.code {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.foot {
+  flex: none;
+  border-top: 1px solid var(--line);
+  padding: 7px 11px;
+  display: flex;
+  gap: 14px;
+  font-size: 11px;
+  color: var(--fg-dim);
+}
+.foot span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

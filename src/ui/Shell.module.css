@@ -1,0 +1,62 @@
+.shell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel);
+  overflow: hidden;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.panes {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- phone drawer ---------------------------------------------------------- */
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  background: color-mix(in srgb, var(--bg-app) 60%, transparent);
+}
+
+/* Overlays the page rather than taking layout width, so the reading column keeps
+   the whole viewport on a 390px screen. */
+.drawer {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 100;
+  /* Exactly the sidebar's own width, so nothing has to be overridden. */
+  width: var(--w-sidebar);
+  max-width: 86vw;
+  display: flex;
+  box-shadow: 0 0 40px var(--shadow-lg);
+  animation: slideIn 160ms ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawer {
+    animation: none;
+  }
+}

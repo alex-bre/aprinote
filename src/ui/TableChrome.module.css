@@ -1,0 +1,112 @@
+/* Chrome, not document: measured from the page but never styled by the vault's
+   stylesheet, so it carries app tokens throughout — the same rule the block
+   gutter follows. */
+.chrome {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+}
+
+.chrome > * {
+  position: absolute;
+  pointer-events: auto;
+}
+
+/* Row and column handles. Flat bars hugging the table's edge: they read as part
+   of the table's frame rather than as buttons floating beside it. */
+.handle {
+  border-radius: 3px;
+  background: var(--line-strong);
+  opacity: 0.9;
+  cursor: pointer;
+  /* The reorder drag is driven by pointer capture — the browser's own gestures
+     would scroll the pane out from under it. */
+  touch-action: none;
+  transition: background 120ms ease, opacity 120ms ease;
+}
+.handle:hover {
+  background: var(--accent);
+  opacity: 1;
+}
+.handle.held {
+  background: var(--accent);
+  opacity: 1;
+}
+
+/* The table's own menu, where the two rails meet. */
+.corner {
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  color: var(--fg-faint);
+  background: var(--bg-chip);
+  border: 1px solid var(--line);
+  transition: color 120ms ease, background 120ms ease;
+}
+.corner:hover {
+  color: var(--accent-on);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* The `+` bars: one beneath the last row, one beside the last column, and the
+   corner that adds both. Quiet until they are pointed at. */
+.add {
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  color: var(--fg-ghost);
+  background: var(--hover);
+  opacity: 0.6;
+  transition: opacity 120ms ease, background 120ms ease, color 120ms ease;
+}
+.add:hover {
+  opacity: 1;
+  color: var(--accent-on);
+  background: var(--accent);
+}
+.both {
+  border-radius: 4px;
+}
+
+/* Column widths: a grab zone straddling the shared edge of two columns. */
+.grip {
+  cursor: col-resize;
+  touch-action: none;
+}
+.grip::after {
+  content: '';
+  position: absolute;
+  inset: 0 2px;
+  border-radius: 1px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+.grip:hover::after,
+.gripping::after {
+  opacity: 0.5;
+}
+
+/* The row or column a menu or a drag is acting on. */
+.band {
+  pointer-events: none;
+  background: var(--accent-wash);
+  border-radius: 2px;
+}
+
+/* Where a dragged row or column would land. */
+.drop {
+  pointer-events: none;
+  border-radius: 1px;
+  background: var(--accent);
+}
+
+/* Where a column edge would land, while it is being dragged. */
+.guide {
+  pointer-events: none;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.9;
+}

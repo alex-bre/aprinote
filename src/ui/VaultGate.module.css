@@ -1,0 +1,239 @@
+.gate {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: var(--bg-app);
+  padding: 32px;
+}
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  box-shadow: 0 18px 50px var(--shadow-lg);
+  padding: 30px 32px 26px;
+  text-align: center;
+}
+
+.mark {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--accent-wash);
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.blurb {
+  margin: 0 0 22px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  border-radius: var(--radius-ctl);
+  background: var(--accent);
+  color: var(--accent-on);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.primary:hover {
+  background: var(--accent-ink);
+}
+
+.secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 34px;
+  border-radius: var(--radius-ctl);
+  border: 1px solid var(--line-ctl);
+  color: var(--fg-mid);
+  font-size: 13px;
+}
+.secondary:hover {
+  background: var(--hover);
+}
+
+.note {
+  margin: 18px 0 0;
+  padding-top: 15px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--fg-faint);
+}
+
+.error {
+  margin: 0 0 16px;
+  padding: 9px 11px;
+  border-radius: var(--radius-ctl);
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  color: var(--danger);
+  font-size: 12.5px;
+  text-align: left;
+}
+
+/* The dev-only demo affordance. Deliberately quieter than the real choices — it
+   is a development shortcut sitting on the same card, not a fourth way to open a
+   vault. */
+.dev {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--line-ctl);
+}
+
+.ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  height: 30px;
+  border-radius: var(--radius-ctl);
+  color: var(--fg-muted);
+  font-size: 12.5px;
+}
+.ghost:hover {
+  background: var(--hover);
+  color: var(--fg-mid);
+}
+
+.devNote {
+  margin: 8px 0 0;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--fg-faint);
+}
+
+.hidden {
+  display: none;
+}
+
+/* The native path field (`NativeVaultGate`). Android has no folder picker, so a
+   typed path is a first-class way in rather than an escape hatch. */
+.pathBox {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-ctl);
+  background: var(--bg-app);
+  text-align: left;
+}
+
+.pathLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--fg-muted);
+}
+
+.pathRow {
+  display: flex;
+  gap: 7px;
+}
+
+.pathInput {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  padding: 0 9px;
+  border: 1px solid var(--line-ctl);
+  border-radius: var(--radius-ctl);
+  background: var(--bg-panel);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.pathInput:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.pathGo {
+  flex: none;
+  padding: 0 13px;
+  height: 32px;
+  border-radius: var(--radius-ctl);
+  background: var(--accent);
+  color: var(--accent-on);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.pathGo:hover:not(:disabled) {
+  background: var(--accent-ink);
+}
+.pathGo:disabled {
+  opacity: 0.5;
+}
+
+.pathWarning {
+  display: flex;
+  gap: 6px;
+  margin: 9px 0 0;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--danger);
+}
+.pathWarning svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+.pathHint {
+  margin: 9px 0 0;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--fg-faint);
+}
+
+/* Opens Android's "All files access" screen. Under the hint or warning that
+   explains it, so it reads as the fix for what was just said. */
+.grant {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  padding: 0 11px;
+  height: 30px;
+  border-radius: var(--radius-ctl);
+  border: 1px solid var(--line-ctl);
+  color: var(--accent-ink);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.grant:hover {
+  background: var(--hover);
+}
+
+/* A full filesystem path, which on Android is long and has to wrap somewhere. */
+.path {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,342 @@
+.sidebar {
+  width: var(--w-sidebar);
+  flex: none;
+  background: var(--bg-sunken);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.head {
+  padding: 10px 10px 8px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 28px;
+  padding: 0 8px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line-ctl);
+  border-radius: var(--radius-ctl);
+  color: var(--fg-faint);
+  font-size: 12px;
+}
+.search kbd {
+  margin-left: auto;
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+  color: var(--fg-ghost);
+}
+
+.newPage {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-ctl);
+  border-radius: var(--radius-ctl);
+  color: var(--fg-mid);
+  background: var(--bg-panel);
+}
+.newPage:hover {
+  background: var(--hover);
+}
+
+.tree {
+  flex: 1;
+  overflow: auto;
+  padding: 2px 6px 12px;
+  font-size: 13px;
+  color: var(--fg-mid);
+}
+/* The tree takes focus so Delete has somewhere to land; the rows show where it
+ * would land, so the container itself needs no ring of its own. */
+.tree:focus,
+.tree:focus-visible {
+  outline: none;
+}
+.rootDrop {
+  box-shadow: inset 0 0 0 2px var(--accent-edge);
+  border-radius: 6px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 6px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  text-align: left;
+  color: var(--fg-mid);
+}
+.row:hover {
+  background: var(--hover);
+}
+.row > span:first-of-type {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folder {
+  color: var(--fg-body);
+  font-weight: 500;
+  margin-top: 2px;
+  padding-left: 0;
+  gap: 0;
+}
+.folder:first-child {
+  margin-top: 0;
+}
+
+.chevron {
+  width: 22px;
+  height: 24px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+}
+.chevron:hover {
+  background: var(--hover-strong);
+}
+
+.folderLabel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 4px;
+  border-radius: 4px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+.folderLabel span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Selection is the sidebar's own state — which rows an action would hit — and is
+ * independent of `.active`, the one page actually open. Both can be true at once. */
+.selected,
+.selected:hover {
+  background: var(--accent-wash);
+  border-color: var(--accent-edge);
+}
+
+.active,
+.active:hover {
+  background: var(--bg-panel);
+  border-color: var(--accent-edge);
+  box-shadow: 0 1px 2px var(--shadow-sm);
+  color: var(--accent-deep);
+  font-weight: 500;
+}
+
+/* Both at once: keep the open page's ring, but take the selection's wash so the
+ * row still reads as part of what an action would hit. */
+.selected.active {
+  background: var(--accent-wash);
+}
+
+.dropTarget,
+.dropTarget:hover {
+  background: var(--accent-wash);
+  border-color: var(--accent-edge);
+  border-style: dashed;
+}
+
+.rename {
+  flex: 1;
+  min-width: 0;
+  height: 20px;
+  padding: 0 4px;
+  border: 1px solid var(--accent-edge);
+  border-radius: 4px;
+  background: var(--bg-panel);
+  color: var(--fg-body);
+  font: inherit;
+  font-weight: 400;
+}
+.rename:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-wash);
+}
+
+/* Only appears for a multi-row selection — the single-row case is served by the
+ * context menu and the Delete key, and a permanent bar would just be noise. */
+.selectionBar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-top: 1px solid var(--line);
+  background: var(--bg-panel);
+  font-size: 11.5px;
+  color: var(--fg-muted);
+}
+.selectionBar button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--fg-mid);
+  font-size: 11.5px;
+}
+.selectionBar button:hover {
+  background: var(--hover);
+}
+.selectionBar button:first-of-type:hover {
+  color: var(--danger);
+}
+.selectionBar span {
+  margin-right: auto;
+}
+
+.count {
+  margin-left: auto;
+  padding-right: 4px;
+  font-size: 11px;
+  color: var(--fg-ghost);
+}
+
+.children {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding-left: 20px;
+  border-left: 1px solid var(--line-soft);
+  margin-left: 13px;
+}
+
+.emptyFolder {
+  height: 26px;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  font-size: 12px;
+  color: var(--fg-faint);
+}
+
+.emptyVault {
+  padding: 20px 8px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--fg-faint);
+  line-height: 1.7;
+}
+.emptyAction {
+  display: block;
+  margin: 6px auto 0;
+  color: var(--accent);
+  font-size: 12.5px;
+}
+.emptyAction:hover {
+  text-decoration: underline;
+}
+
+.foot {
+  flex: none;
+  border-top: 1px solid var(--line);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--fg-dim);
+  white-space: nowrap;
+}
+.foot span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* `_vault/` never appears in the tree, so the stylesheet needs its own way in. */
+.stylesheet {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--fg-mid);
+  text-align: left;
+}
+.stylesheet:hover {
+  background: var(--hover);
+}
+.stylesheet.active {
+  background: var(--accent-wash);
+  color: var(--accent-ink);
+}
+.stylesheet code {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-faint);
+}
+
+/* Backlinks come from the same index the links resolve against. */
+.backlinks {
+  flex: none;
+  border-top: 1px solid var(--line);
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  max-height: 160px;
+  overflow: auto;
+}
+
+.sectionLabel {
+  padding: 0 6px 4px;
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+.backlink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 6px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 12.5px;
+  color: var(--fg-muted);
+  text-align: left;
+}
+.backlink:hover {
+  background: var(--hover);
+}
+.backlink span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

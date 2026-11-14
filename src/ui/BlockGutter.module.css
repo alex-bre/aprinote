@@ -1,0 +1,85 @@
+/* Chrome, not document: the gutter is measured from the page but never styled by
+   the vault's stylesheet, so it carries app tokens throughout. */
+.gutter {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.row {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  color: var(--fg-faint);
+  opacity: 0.55;
+  white-space: nowrap;
+  transition: opacity 120ms ease, color 120ms ease;
+}
+
+/* The block holding the caret — "the current line". */
+.active .label {
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* Picked by a marquee. The highlight itself is drawn on the block; the gutter
+   just keeps its handle out so the group can be dragged from any row of it. */
+.picked .label {
+  color: var(--accent-ink);
+  opacity: 1;
+}
+
+.hovered .label {
+  opacity: 1;
+}
+
+.grip {
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 18px;
+  flex: none;
+  border-radius: 3px;
+  color: var(--fg-faint);
+  opacity: 0;
+  cursor: grab;
+  /* The drag is driven by pointer capture — the browser's own gestures would
+     scroll the pane out from under it. */
+  touch-action: none;
+  transition: opacity 120ms ease;
+}
+.hovered .grip,
+.picked .grip,
+.dragging .grip {
+  opacity: 1;
+}
+.grip:hover {
+  background: var(--hover);
+  color: var(--fg-mid);
+}
+.dragging .grip {
+  cursor: grabbing;
+}
+
+.dragging .label {
+  opacity: 0.35;
+}
+
+.drop {
+  position: absolute;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+  pointer-events: none;
+}

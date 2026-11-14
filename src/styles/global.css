@@ -1,0 +1,101 @@
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--bg-app);
+  color: var(--fg-body);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* Atom selection. An attribute rather than an overlay, so it moves with the
+   DOM through undo and needs no positioning pass. Editor-only — the serializer
+   strips it, so it never reaches a file. */
+.aprinote-page [data-aprinote-selected] {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Block selection. A marquee drawn in the page's margins picks whole
+   blocks so they can be moved or deleted together. A marker attribute like the
+   atom ring above, so the mark travels with the block through a move and an undo;
+   the tint is an inset shadow rather than a background, so a callout's own colour
+   is shaded rather than replaced. */
+.aprinote-page [data-aprinote-picked] {
+  border-radius: 3px;
+  outline: 2px solid var(--accent-edge);
+  outline-offset: 1px;
+  box-shadow: inset 0 0 0 9999px var(--accent-wash);
+}
+
+/* An embed is an inert card while editing — its src is parked in data-aprinote-src so
+   the frame is never fetched. The real thing goes live in the sandboxed preview. */
+.aprinote-page [data-aprinote-embed] {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 8px;
+  background: var(--bg-inset);
+}
+.aprinote-page [data-aprinote-embed] iframe {
+  display: none;
+}
+.aprinote-page [data-aprinote-embed]::after {
+  content: 'Embed · ' attr(data-aprinote-embed);
+  padding: 0 16px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--fg-muted);
+  text-align: center;
+  word-break: break-all;
+}
+
+/* A reference whose bytes were not found — a move that failed to rewrite a src. */
+.aprinote-page [data-aprinote-missing] {
+  outline: 1px dashed var(--danger);
+  outline-offset: 2px;
+}
+
+/* An unresolvable page link renders as a muted chip while editing; its href is
+   left as last known so the static site still degrades gracefully. */
+.aprinote-page a[data-aprinote-broken] {
+  background: var(--hover-strong);
+  border: 1px dashed var(--line-strong);
+  border-radius: 5px;
+  padding: 1px 6px;
+  color: var(--fg-faint);
+  text-decoration: line-through;
+}

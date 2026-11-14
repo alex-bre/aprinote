@@ -1,0 +1,62 @@
+.bar {
+  flex: none;
+  height: var(--h-statusbar);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 12px;
+  border-top: 1px solid var(--line);
+  background: var(--bg-sunken);
+  font-size: 11px;
+  color: var(--fg-dim);
+}
+
+.save {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.saved {
+  color: var(--ok);
+}
+.dirty,
+.saving {
+  color: var(--fg-dim);
+}
+.conflict,
+.error {
+  color: var(--danger);
+}
+
+.resolve {
+  display: flex;
+  gap: 8px;
+}
+.resolve button {
+  color: var(--accent);
+  font-size: 11px;
+}
+.resolve button:hover {
+  text-decoration: underline;
+}
+
+.hint {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Keyboard hints mean nothing on a phone, and the width is worth more. */
+@media (max-width: 760px) {
+  .hint {
+    display: none;
+  }
+}

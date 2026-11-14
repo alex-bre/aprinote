@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Block Gallery</title>
+  <meta name="aprinote-id" content="pg_dm05">
+  <meta name="aprinote-edited" content="2026-09-05T09:20:00Z">
+  <link rel="stylesheet" href="../_vault/site.css">
+  <style>
+    /* This page's own rules, in its own <style> block. They are written back to
+       the file byte for byte and win over site.css, in the editor and in preview. */
+    .lead { color: #6b47d6 }
+    .gallery-note { border-left: 3px solid #6b47d6; padding-left: 14px; color: #4a4a4a }
+  </style>
+</head>
+<body><article class="aprinote-page">
+<h1>I am a Heading 1</h1>
+
+<p class="lead">A tour of every block this editor can produce. Each block says what it is and what HTML it becomes. This page carries its own <code>&lt;style&gt;</code> block, which is why the line above is violet.</p>
+
+<p class="gallery-note">I am a paragraph with a page-local class. Nothing in the app put <code>.gallery-note</code> here — it was typed into the source view, and the source view is the whole file.</p>
+
+<h2>I am a Heading 2</h2>
+<h3>I am a Heading 3</h3>
+<h4>I am a Heading 4</h4>
+
+<hr>
+
+<p>I am body text. I can be <strong>bold</strong>, <em>italic</em>, <u>underlined</u>, or all three at once — <strong><em><u>like this</u></em></strong>. I can carry a <a href="https://example.com">plain external link</a>, a stable <a data-aprinote="pg_dm07" href="links-and-backlinks.html">page link</a>, <code>inline code</code>, a <span style="color:#c2410c">palette text colour</span> and a <span style="background:#dce7fd">palette background</span>.</p>
+
+<p style="text-align:center">I am centered.</p>
+<p style="text-align:right">I am right-aligned.</p>
+<p style="text-align:justify">I am justified, so my lines stretch to meet both margins evenly — useful for dense reading columns, and visible only once a paragraph runs past a single line of text like this one does.</p>
+
+<ul>
+  <li>I am a bullet item</li>
+  <li>Type <code>- </code> to start one
+    <ul><li>Tab nests me</li></ul>
+  </li>
+</ul>
+
+<ol>
+  <li>I am a numbered item</li>
+  <li>Type <code>1. </code> to start one
+    <ol><li>Renumbering is automatic</li></ol>
+  </li>
+</ol>
+
+<figure style="max-width:420px">
+  <img src="../_assets/demo-photo.svg" alt="A placeholder image" loading="lazy">
+  <figcaption>I am a caption. Select the image to set max-width, aspect ratio and alignment.</figcaption>
+</figure>
+
+<table>
+  <tr><th>Block</th><th>How to insert</th></tr>
+  <tr><td>I am a header cell's row</td><td>Hover the edge handles to add or drag</td></tr>
+  <tr><td>I am a body cell</td><td>Tab moves on, Enter adds a row</td></tr>
+</table>
+
+<div class="callout">I am a callout. I am just a <code>&lt;div class="callout"&gt;</code>, styled by the vault stylesheet.</div>
+
+<div class="callout" style="background:#fbdde8">
+  <p>I am a callout with a colour of my own, and I hold whole blocks.</p>
+  <ul><li>Like this list</li></ul>
+</div>
+
+<div class="columns">
+  <div class="column"><p>I am the left column of a <code>&lt;div class="columns"&gt;</code>.</p></div>
+  <div class="column"><p>I am the right column. Type <code>/columns</code> for two or three of us.</p></div>
+</div>
+
+<blockquote>I am a blockquote. Because pages are plain HTML documents, anything valid can live here.</blockquote>
+
+<pre><code>I am a code block — never formatted, never linkified.
+&lt;a data-aprinote="pg_dm00"&gt;stays literal&lt;/a&gt;</code></pre>
+
+<figure class="embed">
+  <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-0.13%2C51.50%2C-0.11%2C51.51&amp;layer=mapnik" loading="lazy" referrerpolicy="no-referrer" allowfullscreen></iframe>
+</figure>
+
+<p>I am the last paragraph. See also <a data-aprinote="pg_dm06" href="tables.html">Tables</a> and <a data-aprinote="pg_dm03" href="../handbook/writing-and-formatting.html">Writing &amp; Formatting</a>.</p>
+</article></body>
+</html>

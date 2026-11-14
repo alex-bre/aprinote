@@ -1,0 +1,40 @@
+.rail {
+  width: var(--w-rail);
+  flex: none;
+  background: var(--bg-sunken);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 9px 0;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  color: var(--fg-muted);
+}
+.btn:hover {
+  background: var(--hover);
+}
+
+.expand {
+  color: var(--fg-mid);
+  background: var(--bg-panel);
+  border: 1px solid var(--line-ctl);
+}
+
+.active,
+.active:hover {
+  background: var(--accent-wash);
+  color: var(--accent-ink);
+}
+
+.spacer {
+  margin-top: auto;
+  color: var(--fg-faint);
+}

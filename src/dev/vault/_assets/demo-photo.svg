@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A placeholder gradient standing in for a photograph">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a6df4"/>
+      <stop offset="55%" stop-color="#6b47d6"/>
+      <stop offset="100%" stop-color="#b4245b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <circle cx="470" cy="110" r="46" fill="#fbe4d5" opacity="0.9"/>
+  <path d="M0 400 L0 300 L140 210 L260 288 L380 196 L520 300 L640 236 L640 400 Z" fill="#14213d" opacity="0.72"/>
+  <path d="M0 400 L0 348 L180 282 L330 342 L470 278 L640 330 L640 400 Z" fill="#0d1628" opacity="0.85"/>
+
+  <text x="32" y="52" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#ffffff" opacity="0.92">_assets/demo-photo.svg</text>
+  <text x="32" y="76" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" fill="#ffffff" opacity="0.72">640 × 400 — stands in for a dropped photograph</text>
+</svg>

@@ -1,0 +1,17 @@
+/* Chrome, not document: drawn over the page but never styled by the vault's
+   stylesheet, so it carries app tokens throughout — the rule the block gutter and
+   the table chrome both follow. */
+.layer {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  /* Above the table chrome, which is the only other thing drawn over the page. */
+  z-index: 6;
+}
+
+.box {
+  position: absolute;
+  border: 1px solid var(--accent-edge);
+  border-radius: 3px;
+  background: var(--accent-wash);
+}

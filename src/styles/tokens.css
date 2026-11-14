@@ -1,0 +1,86 @@
+/* App chrome tokens. Every colour is a `light-dark()` pair, so the system
+ * preference is honoured with no JavaScript; `color-scheme` below is the only
+ * thing the theme switch touches.
+ *
+ * These style the chrome ONLY. The document surface has its own palette in
+ * doc.css and stays true to the page as a reader would see it.
+ *
+ * The chrome is aprinote apricot: warm neutrals rather than grey ones, so the
+ * greys carry a trace of the accent instead of fighting it. Hovers, lines and
+ * shadows tint from brown in light and from a warm cream in dark.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  --bg-app: light-dark(#eae4dc, #100d0a);
+  --bg-panel: light-dark(#fffdfa, #1e1a16);
+  --bg-source: light-dark(#fcfaf6, #1c1813);
+  --bg-sunken: light-dark(#faf7f2, #191510);
+  --bg-inset: light-dark(#f4efe8, #141110);
+  --bg-stage: light-dark(#f2ede6, #151211);
+  --bg-chip: light-dark(#f5f1ea, #262119);
+
+  --hover: light-dark(rgba(90, 55, 20, 0.055), rgba(255, 232, 208, 0.06));
+  --hover-strong: light-dark(rgba(90, 55, 20, 0.075), rgba(255, 232, 208, 0.09));
+
+  --line: light-dark(rgba(74, 44, 16, 0.11), rgba(255, 232, 208, 0.11));
+  --line-soft: light-dark(rgba(74, 44, 16, 0.08), rgba(255, 232, 208, 0.07));
+  --line-strong: light-dark(rgba(74, 44, 16, 0.15), rgba(255, 232, 208, 0.16));
+  --line-ctl: light-dark(rgba(74, 44, 16, 0.13), rgba(255, 232, 208, 0.15));
+
+  --fg: light-dark(#181310, #f3ede6);
+  --fg-body: light-dark(#2e2721, #ded7cd);
+  --fg-mid: light-dark(#3e362e, #c9c1b6);
+  --fg-muted: light-dark(#7d746a, #9d9488);
+  --fg-dim: light-dark(#8c8378, #8f867a);
+  --fg-faint: light-dark(#aaa094, #746b61);
+  --fg-ghost: light-dark(#b7ada0, #655c52);
+
+  --accent: light-dark(#dd7c3e, #f0a468);
+  --accent-ink: light-dark(#b25b21, #f6c49c);
+  --accent-deep: light-dark(#4a2610, #fbe1cb);
+  --accent-wash: light-dark(rgba(221, 124, 62, 0.11), rgba(240, 164, 104, 0.16));
+  --accent-wash-strong: light-dark(rgba(221, 124, 62, 0.2), rgba(240, 164, 104, 0.28));
+  --accent-edge: light-dark(rgba(221, 124, 62, 0.38), rgba(240, 164, 104, 0.5));
+
+  /* Label colour for text and icons sitting *on* an accent fill. White reads on
+     the light apricot, but the dark theme lifts the accent well past white, so
+     there the label flips to the deep brown end of the ramp instead. */
+  --accent-on: light-dark(#ffffff, #4a2610);
+
+  --ok: light-dark(#3f8a52, #74c98a);
+  --danger: light-dark(#c0392b, #f0705f);
+
+  /* light-dark() takes colours only, so shadows carry their colour separately. */
+  --shadow-sm: light-dark(rgba(74, 44, 16, 0.11), rgba(0, 0, 0, 0.55));
+  --shadow-lg: light-dark(rgba(74, 44, 16, 0.14), rgba(0, 0, 0, 0.6));
+  --scroll-thumb: light-dark(rgba(74, 44, 16, 0.2), rgba(255, 232, 208, 0.18));
+
+  /* The paper the document sits on. Not a `light-dark()` pair: the page renders as
+     a reader sees it, so this stays put when the chrome goes dark.
+     Everything *inside* `.aprinote-page` comes from the vault's own site.css. */
+  --doc-surface: #ffffff;
+
+  --radius-panel: 11px;
+  --radius-ctl: 6px;
+  --radius-pop: 9px;
+
+  --font-ui: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* chrome metrics — the fitChrome budget mirrors these numbers */
+  --h-topbar: 44px;
+  --h-statusbar: 28px;
+  --w-sidebar: 252px;
+  --w-rail: 46px;
+  --w-inspector: 268px;
+}
+
+/* The switch pins the scheme; `light-dark()` resolves against it. */
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Links &amp; Backlinks</title>
+  <meta name="aprinote-id" content="pg_dm07">
+  <meta name="aprinote-edited" content="2026-09-06T12:00:00Z">
+  <link rel="stylesheet" href="../_vault/site.css">
+</head>
+<body><article class="aprinote-page">
+<h1>Links &amp; Backlinks</h1>
+
+<p class="lead">Every other page in this vault links here, so the backlinks panel has something to show. Open the inspector to see them.</p>
+
+<h2>What a page link is</h2>
+
+<pre><code>&lt;a data-aprinote="pg_dm05" href="block-gallery.html"&gt;Block Gallery&lt;/a&gt;</code></pre>
+
+<p><code>data-aprinote</code> is the truth the app resolves against. The <code>href</code> is <em>derived</em> — recomputed on every save, and on any rename or move — so the files stay clickable as a plain static site while the app never depends on them.</p>
+
+<h2>What that buys</h2>
+
+<table class="zebra">
+  <colgroup><col style="width:38%"><col style="width:62%"></colgroup>
+  <tr><th>You do</th><th>The vault does</th></tr>
+  <tr><td>Rename a page</td><td>Renames the file, rewrites every inbound <code>href</code>, and updates the link text wherever it still matched the old title</td></tr>
+  <tr><td>Move a page to another folder</td><td>Recomputes its <code>../</code> depth for assets and links, in one write</td></tr>
+  <tr><td>Move a whole folder</td><td>The same, for every page underneath it</td></tr>
+  <tr><td>Give a link your own words</td><td>Leaves them alone on rename — a hand-written label is a decision</td></tr>
+</table>
+
+<h2>Try it</h2>
+
+<ol>
+  <li>Rename <a data-aprinote="pg_dm05" href="block-gallery.html">Block Gallery</a> from the sidebar</li>
+  <li>Watch this page's link text follow it, and the file on disk change name</li>
+  <li>Drag it into <a data-aprinote="pg_dm02" href="../handbook/index.html">Handbook</a> and check the source view: the <code>href</code> has grown a <code>../</code></li>
+</ol>
+
+<div class="callout">An id that resolves to nothing keeps its last known <code>href</code> rather than being blanked. A dangling link degrades into an ordinary broken one instead of vanishing.</div>
+
+<h2>Everything in this vault</h2>
+
+<ul>
+  <li><a data-aprinote="pg_dm00" href="../index.html">Demo Vault</a> — the homepage</li>
+  <li><a data-aprinote="pg_dm01" href="../getting-started.html">Getting Started</a></li>
+  <li><a data-aprinote="pg_dm02" href="../handbook/index.html">Handbook</a>
+    <ul>
+      <li><a data-aprinote="pg_dm03" href="../handbook/writing-and-formatting.html">Writing &amp; Formatting</a></li>
+      <li><a data-aprinote="pg_dm04" href="../handbook/blocks-and-media.html">Blocks &amp; Media</a></li>
+    </ul>
+  </li>
+  <li><a data-aprinote="pg_dm05" href="block-gallery.html">Block Gallery</a></li>
+  <li><a data-aprinote="pg_dm06" href="tables.html">Tables</a></li>
+</ul>
+
+<p>And one link that points at nothing at all: <a data-aprinote="pg_missing" href="does-not-exist.html">a page that was never here</a>. It is in the vault so the dangling case is always on screen somewhere.</p>
+</article></body>
+</html>

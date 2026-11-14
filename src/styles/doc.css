@@ -1,0 +1,289 @@
+/* The default vault stylesheet — written to `_vault/site.css` at vault
+ * initialisation, after which it belongs to the user.
+ *
+ * Written for a *standalone page* — `body`, `h1`, `p`, not `.aprinote-page h1`. That
+ * matters twice over. Opened straight off disk it styles the real document. And
+ * injected into the editor under `@scope (.aprinote-page)`, the root-ish selectors are
+ * rewritten to `:scope` and the descendant ones match as they are — whereas a
+ * `.aprinote-page`-prefixed rule would need a `.aprinote-page` inside `.aprinote-page` and
+ * would silently match nothing.
+ *
+ * It carries its own `--doc-*` palette and never reads an app token, so switching
+ * the app to dark mode cannot repaint the user's page.
+ */
+
+:root {
+  --doc-surface: #ffffff;
+  --doc-sunken: #fafaf9;
+
+  --doc-fg: #141414;
+  --doc-body: #2a2a2a;
+  --doc-mid: #3a3a3a;
+  --doc-muted: #6b6b6b;
+  --doc-faint: #9a9a9a;
+  --doc-quote: #5a5a5a;
+
+  --doc-line: rgba(0, 0, 0, 0.09);
+  --doc-line-soft: rgba(0, 0, 0, 0.07);
+  --doc-line-strong: rgba(0, 0, 0, 0.12);
+  --doc-quote-rule: rgba(0, 0, 0, 0.18);
+
+  --doc-accent: #2a6df4;
+  --doc-accent-ink: #1b52c4;
+  --doc-accent-wash: rgba(42, 109, 244, 0.09);
+  --doc-accent-edge: rgba(42, 109, 244, 0.2);
+
+  --doc-code-bg: #f4f4f3;
+  --doc-callout-bg: #dce7fd;
+  --doc-callout-fg: #14213d;
+
+  --doc-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --doc-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --doc-column: 768px;
+}
+
+body {
+  max-width: var(--doc-column);
+  margin: 0 auto;
+  padding: 52px 40px 120px;
+  background: var(--doc-surface);
+  font-family: var(--doc-font);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--doc-body);
+}
+
+/* Below the column cap the measure goes fluid with 18px gutters — text never scales down. */
+@media (max-width: 760px) {
+  body {
+    padding: 24px 18px 60px;
+  }
+}
+
+body > :first-child {
+  margin-top: 0;
+}
+body > :last-child {
+  margin-bottom: 0;
+}
+
+h1 {
+  margin: 0 0 26px;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--doc-fg);
+}
+h2 {
+  margin: 34px 0 12px;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--doc-fg);
+}
+h3 {
+  margin: 32px 0 10px;
+  font-size: 17.5px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--doc-fg);
+}
+h4 {
+  margin: 26px 0 8px;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+  color: var(--doc-mid);
+}
+
+p {
+  margin: 0 0 18px;
+}
+
+ul,
+ol {
+  margin: 0 0 22px;
+  padding-left: 22px;
+  line-height: 1.85;
+}
+li > ul,
+li > ol {
+  margin: 0;
+  padding-left: 18px;
+}
+
+a {
+  color: var(--doc-accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--doc-accent-ink);
+  text-decoration: underline;
+}
+a[data-aprinote] {
+  background: var(--doc-accent-wash);
+  border: 1px solid var(--doc-accent-edge);
+  border-radius: 5px;
+  padding: 1px 6px;
+  color: var(--doc-accent-ink);
+  font-size: 14.5px;
+}
+a[data-aprinote]:hover {
+  text-decoration: none;
+  background: rgba(42, 109, 244, 0.14);
+}
+
+u {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+code {
+  font-family: var(--doc-mono);
+  font-size: 14px;
+  background: var(--doc-code-bg);
+  border: 1px solid var(--doc-line-soft);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+pre {
+  margin: 0 0 26px;
+  background: var(--doc-sunken);
+  border: 1px solid var(--doc-line-strong);
+  border-radius: 8px;
+  padding: 12px 14px;
+  overflow-x: auto;
+}
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--doc-mid);
+}
+
+blockquote {
+  margin: 0 0 26px;
+  padding: 4px 0 4px 16px;
+  border-left: 2px solid var(--doc-quote-rule);
+  line-height: 1.7;
+  color: var(--doc-quote);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--doc-line);
+  margin: 0 0 28px;
+}
+
+figure {
+  margin: 0 0 26px;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+figcaption {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--doc-faint);
+}
+
+table {
+  width: 100%;
+  margin: 0 0 26px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--doc-line-strong);
+  border-radius: 7px;
+  overflow: hidden;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+th,
+td {
+  padding: 11px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--doc-line-soft);
+  border-right: 1px solid var(--doc-line-soft);
+}
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+tr:last-child td {
+  border-bottom: 0;
+}
+th {
+  background: var(--doc-sunken);
+  font-weight: 600;
+  color: var(--doc-mid);
+  border-bottom: 1px solid var(--doc-line);
+}
+/* Banded rows, when a table asks for them. `nth-of-type` counts rows only, so a
+   `<colgroup>` carrying column widths cannot shift which rows are striped. Odd
+   rows, so a shaded header row is followed by a plain one rather than doubling up. */
+.zebra tr:nth-of-type(odd) td {
+  background: var(--doc-sunken);
+}
+
+iframe {
+  width: 100%;
+  border: 1px solid var(--doc-line-strong);
+  border-radius: 8px;
+}
+
+/* Classes this stylesheet ships with. */
+.callout {
+  background: var(--doc-callout-bg);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 0 0 26px;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--doc-callout-fg);
+}
+/* A callout holds whole blocks — paragraphs, lists, images — so its own padding
+   is the spacing at the edges, not the first and last block's margins. */
+.callout > :first-child {
+  margin-top: 0;
+}
+.callout > :last-child {
+  margin-bottom: 0;
+}
+/* Side-by-side columns: `<div class="columns">` holding one `<div class="column">`
+   per column, each an ordinary container of blocks. As many columns as there are
+   children, all equal; they stack on a narrow screen, where side by side would
+   leave no measure to read. */
+.columns {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 28px;
+  margin: 0 0 26px;
+}
+.column > :first-child {
+  margin-top: 0;
+}
+.column > :last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 760px) {
+  .columns {
+    grid-auto-flow: row;
+    gap: 18px;
+  }
+}
+.lead {
+  font-size: 16px;
+  color: var(--doc-muted);
+}

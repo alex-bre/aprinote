@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tables</title>
+  <meta name="aprinote-id" content="pg_dm06">
+  <meta name="aprinote-edited" content="2026-09-05T16:45:00Z">
+  <link rel="stylesheet" href="../_vault/site.css">
+</head>
+<body><article class="aprinote-page">
+<h1>Tables</h1>
+
+<p class="lead">Plain <code>&lt;table&gt;</code> markup with no wrapper divs, no data attributes and no state kept outside the file.</p>
+
+<h2>The default shape</h2>
+
+<p>A fresh table is 3×2 with a header row: one <code>&lt;tr&gt;</code> of <code>&lt;th&gt;</code>, then <code>&lt;td&gt;</code> rows. <code>Tab</code> moves to the next cell, <code>Enter</code> at the end of the last row adds another.</p>
+
+<table>
+  <tr><th>Gesture</th><th>Result</th></tr>
+  <tr><td>Hover a column edge</td><td>Handles to insert, delete or drag that column</td></tr>
+  <tr><td>Hover a row edge</td><td>The same, for rows</td></tr>
+  <tr><td>Drag a boundary</td><td>Writes column widths as a <code>&lt;colgroup&gt;</code></td></tr>
+</table>
+
+<h2>Banded rows</h2>
+
+<p>The <em>zebra</em> switch adds one class. The stripe itself is a rule in the vault stylesheet, so a reader opening the file off disk sees the same bands.</p>
+
+<table class="zebra">
+  <tr><th>Release</th><th>Date</th><th>Highlight</th></tr>
+  <tr><td>0.1</td><td>2026-03-02</td><td>Editing surface and the normaliser</td></tr>
+  <tr><td>0.2</td><td>2026-04-18</td><td>Vault I/O, stable page ids</td></tr>
+  <tr><td>0.3</td><td>2026-06-07</td><td>Rich blocks and the inspector</td></tr>
+  <tr><td>0.4</td><td>2026-08-21</td><td>Search, settings, the mobile layout</td></tr>
+</table>
+
+<h2>Declared column widths</h2>
+
+<p>Dragging a boundary writes percentages into a <code>&lt;colgroup&gt;</code> and pins <code>table-layout: fixed</code>, without which a browser is free to ignore a width whenever the content wants more room. <em>Distribute</em> removes both again.</p>
+
+<table style="table-layout:fixed;width:100%">
+  <colgroup><col style="width:22%"><col style="width:48%"><col style="width:30%"></colgroup>
+  <tr><th>Field</th><th>Meaning</th><th>Written as</th></tr>
+  <tr><td>id</td><td>The page's stable identity, assigned once and never reused</td><td><code>&lt;meta name="aprinote-id"&gt;</code></td></tr>
+  <tr><td>edited</td><td>Last save, stamped by the app rather than the filesystem</td><td><code>&lt;meta name="aprinote-edited"&gt;</code></td></tr>
+  <tr><td>title</td><td>What the sidebar shows, and the heading the page opens with</td><td><code>&lt;title&gt;</code></td></tr>
+</table>
+
+<div class="callout">A table is a block like any other: pick it up by the gutter handle and drop it into a callout, or select it with its neighbours and move the lot.</div>
+
+<p>Back to the <a data-aprinote="pg_dm05" href="block-gallery.html">Block Gallery</a>, or on to <a data-aprinote="pg_dm07" href="links-and-backlinks.html">Links &amp; Backlinks</a>.</p>
+</article></body>
+</html>

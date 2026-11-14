@@ -1,0 +1,86 @@
+name: Android APK
+
+# Started by hand only (Actions → Android APK → Run workflow), on whichever
+# branch is picked there. The APK comes back as a run artifact, ready to
+# sideload: there is no signing key in this repository, so the release APK is
+# signed with Gradle's debug key, which is all Android asks of a sideloaded
+# build. See README → Desktop and Android for using a real key instead.
+#
+# Not part of the Release workflow on purpose. A release publishes the static
+# web build; an APK is built when someone wants one.
+on:
+  workflow_dispatch:
+    inputs:
+      abi:
+        description: 'Which processors to build for'
+        type: choice
+        options: [arm64, universal]
+        default: arm64
+
+permissions:
+  contents: read
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # The Android Gradle plugin rejects a JDK newer than it knows about, and
+      # the runner's default is whatever is newest.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Add the Rust Android targets
+        run: |
+          if [ '${{ inputs.abi }}' = universal ]; then
+            rustup target add aarch64-linux-android armv7-linux-androideabi \
+              i686-linux-android x86_64-linux-android
+          else
+            rustup target add aarch64-linux-android
+          fi
+
+      # The runner ships an NDK; `scripts/android-env.sh` finds the SDK itself.
+      - name: Point the build at the runner's NDK
+        run: echo "NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> "$GITHUB_ENV"
+
+      # The Rust build is the slow half, and the crate graph only moves when
+      # Cargo.lock does.
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            src-tauri/target
+          key: cargo-android-${{ inputs.abi }}-${{ hashFiles('src-tauri/Cargo.lock') }}
+          restore-keys: cargo-android-${{ inputs.abi }}-
+
+      - run: npm ci
+      # Before the long build, so a type error costs a minute and not twenty.
+      - run: npm run typecheck
+      - run: npm test
+
+      - name: Build the APK
+        run: |
+          if [ '${{ inputs.abi }}' = universal ]; then
+            bash scripts/android.sh apk
+          else
+            bash scripts/android.sh apk --target aarch64
+          fi
+
+      - name: Collect it
+        run: |
+          mkdir -p apk
+          find src-tauri/gen/android/app/build/outputs/apk -name '*.apk' -exec cp {} apk/ \;
+          ls -lh apk | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aprinote-apk
+          path: apk/*.apk
+          if-no-files-found: error

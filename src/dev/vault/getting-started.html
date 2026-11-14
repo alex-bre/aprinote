@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Getting Started</title>
+  <meta name="aprinote-id" content="pg_dm01">
+  <meta name="aprinote-edited" content="2026-09-02T10:15:00Z">
+  <link rel="stylesheet" href="_vault/site.css">
+</head>
+<body><article class="aprinote-page">
+<h1>Getting Started</h1>
+
+<p class="lead">The whole app in one page: three modes, one document, and a folder of real files underneath it.</p>
+
+<h2>The three modes</h2>
+
+<ol>
+  <li><strong>Edit</strong> — the WYSIWYG surface. What you type becomes ordinary HTML.</li>
+  <li><strong>Source</strong> — the full file, head and all. Edits here land in the same document the editor is holding.</li>
+  <li><strong>Preview</strong> — the page as a reader gets it, at a real device width.</li>
+</ol>
+
+<div class="callout">Switch modes with the segmented control in the top bar. The document never round-trips through a different format on the way — all three views are the same file.</div>
+
+<h2>Shortcuts worth knowing</h2>
+
+<table class="zebra">
+  <colgroup><col style="width:30%"><col style="width:70%"></colgroup>
+  <tr><th>Keys</th><th>What happens</th></tr>
+  <tr><td><code>⌘K</code></td><td>Search pages, page text and commands. With text selected, it links instead.</td></tr>
+  <tr><td><code>/</code></td><td>The slash menu, at the start of an empty paragraph.</td></tr>
+  <tr><td><code>⌘B</code> <code>⌘I</code> <code>⌘U</code></td><td>Bold, italic, underline.</td></tr>
+  <tr><td><code>⌘S</code></td><td>Save the vault stylesheet. Pages autosave on their own.</td></tr>
+  <tr><td><code>Tab</code></td><td>Nest a list item; move to the next table cell.</td></tr>
+</table>
+
+<h2>Markdown-ish input rules</h2>
+
+<ul>
+  <li>Type <code>- </code> for a bullet, <code>1. </code> for a number</li>
+  <li>Type <code>## </code> through <code>##### </code> for headings 2–4</li>
+  <li>Type <code>&gt; </code> for a quote, <code>--- </code> for a divider</li>
+</ul>
+
+<h2>Where things live</h2>
+
+<pre><code>demo-vault/
+  index.html                       this vault's homepage
+  getting-started.html             you are here
+  handbook/index.html              a folder that is also a page
+  handbook/writing-and-formatting.html
+  handbook/blocks-and-media.html
+  reference/block-gallery.html
+  reference/tables.html
+  reference/links-and-backlinks.html
+  _assets/demo-vault-map.svg       images, one flat directory
+  _vault/site.css                  the vault stylesheet, editable in-app
+  _vault/vault.json                palette and settings</code></pre>
+
+<p>Next: the <a data-aprinote="pg_dm02" href="handbook/index.html">Handbook</a>, or straight to the <a data-aprinote="pg_dm05" href="reference/block-gallery.html">Block Gallery</a>.</p>
+</article></body>
+</html>

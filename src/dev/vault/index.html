@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Demo Vault</title>
+  <meta name="aprinote-id" content="pg_dm00">
+  <meta name="aprinote-edited" content="2026-09-01T09:00:00Z">
+  <link rel="stylesheet" href="_vault/site.css">
+</head>
+<body><article class="aprinote-page">
+<h1>Demo Vault</h1>
+
+<p class="lead">A pre-filled vault for development. It is held in memory, so every reload hands you these same files back, unedited — break anything you like.</p>
+
+<div class="callout">This page is <code>index.html</code> at the vault root: the optional vault homepage. Open the folder in a browser and this is what a reader lands on.</div>
+
+<h2>Start here</h2>
+
+<ul>
+  <li><a data-aprinote="pg_dm01" href="getting-started.html">Getting Started</a> — the three modes, the shortcuts, and where things live</li>
+  <li><a data-aprinote="pg_dm02" href="handbook/index.html">Handbook</a> — a folder that is also a page</li>
+  <li><a data-aprinote="pg_dm05" href="reference/block-gallery.html">Block Gallery</a> — every block this editor can produce, in one document</li>
+</ul>
+
+<h2>What this vault demonstrates</h2>
+
+<table>
+  <colgroup><col style="width:34%"><col style="width:66%"></colgroup>
+  <tr><th>Shape</th><th>Where to find it</th></tr>
+  <tr><td>Folder that is a page</td><td><code>handbook/index.html</code> — the folder row <em>is</em> the page</td></tr>
+  <tr><td>Plain folder</td><td><code>reference/</code> — no index page, so the sidebar offers to add one</td></tr>
+  <tr><td>Stable links</td><td><a data-aprinote="pg_dm07" href="reference/links-and-backlinks.html">Links &amp; Backlinks</a>, which everything else points at</td></tr>
+  <tr><td>Per-page styles</td><td><a data-aprinote="pg_dm05" href="reference/block-gallery.html">Block Gallery</a> carries its own <code>&lt;style&gt;</code> block</td></tr>
+  <tr><td>Assets</td><td><code>_assets/</code> holds three files; one is referenced by nothing</td></tr>
+</table>
+
+<figure style="max-width:520px;margin-inline:auto">
+  <img src="_assets/demo-vault-map.svg" alt="Diagram of the demo vault's folders and files" loading="lazy">
+  <figcaption>The whole vault. Root-level pages reference assets as <code>_assets/…</code>; pages one folder deep as <code>../_assets/…</code>.</figcaption>
+</figure>
+
+<h2>Housekeeping</h2>
+
+<p>Nothing here is written to disk. Reloading the tab re-seeds the vault from the files in <code>src/dev/vault/</code>, so a demo page is a fine place to test a destructive change. To keep what you write, open a real folder from the vault gate instead.</p>
+
+<blockquote>Edit these pages in the repo and they change for everyone — they are ordinary HTML files, checked in beside the code.</blockquote>
+</article></body>
+</html>

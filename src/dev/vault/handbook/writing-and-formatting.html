@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Writing &amp; Formatting</title>
+  <meta name="aprinote-id" content="pg_dm03">
+  <meta name="aprinote-edited" content="2026-09-03T14:05:00Z">
+  <link rel="stylesheet" href="../_vault/site.css">
+</head>
+<body><article class="aprinote-page">
+<h1>Writing &amp; Formatting</h1>
+
+<p class="lead">Everything the floating toolbar can do to text, with the HTML each gesture produces.</p>
+
+<h2>Heading 2 — the section level</h2>
+<h3>Heading 3 — the subsection level</h3>
+<h4>Heading 4 — the smallest one</h4>
+
+<p>Body text carries the marks you would expect: <strong>bold</strong> becomes <code>&lt;strong&gt;</code>, <em>italic</em> becomes <code>&lt;em&gt;</code>, <u>underline</u> becomes <code>&lt;u&gt;</code>, and they stack — <strong><em><u>all three at once</u></em></strong>. <code>Inline code</code> is a plain <code>&lt;code&gt;</code>.</p>
+
+<p>Colours come from the vault palette in <code>_vault/vault.json</code>, so a document can only ever use colours the vault knows about: <span style="color:#2a6df4">blue text</span>, <span style="color:#0f8a6a">green text</span>, <span style="color:#c2410c">orange text</span>, <span style="background:#dce7fd">a blue background</span>, <span style="background:#fbe4d5">an orange one</span>, and <span style="color:#6b47d6;background:#e6ddfa">both together</span>.</p>
+
+<h2>Alignment</h2>
+
+<p>Left is the default, and writes no style at all.</p>
+<p style="text-align:center">Centered — <code>style="text-align:center"</code> on the block.</p>
+<p style="text-align:right">Right-aligned.</p>
+<p style="text-align:justify">Justified, which only shows itself once a paragraph runs past a single line, as this one does — the lines stretch to meet both margins, which is worth having for a dense reading column and worth avoiding almost everywhere else.</p>
+
+<h2>Lists</h2>
+
+<ul>
+  <li>A bullet list is a plain <code>&lt;ul&gt;</code></li>
+  <li>Start one by typing <code>- </code> at the head of a paragraph
+    <ul>
+      <li><code>Tab</code> nests, <code>Shift+Tab</code> lifts back out</li>
+      <li>A nested list lives inside the <code>&lt;li&gt;</code> it hangs off, which is what makes it valid HTML</li>
+    </ul>
+  </li>
+  <li>Enter on an empty item ends the list</li>
+</ul>
+
+<ol>
+  <li>A numbered list is an <code>&lt;ol&gt;</code></li>
+  <li>Start one by typing <code>1. </code>
+    <ol>
+      <li>Numbering is the browser's job, never written into the file</li>
+      <li>So reordering items renumbers them for free</li>
+    </ol>
+  </li>
+</ol>
+
+<h2>Links</h2>
+
+<p>Three kinds, and they are all just anchors:</p>
+
+<ul>
+  <li>An <a href="https://example.com/handbook">external link</a> — an ordinary <code>href</code></li>
+  <li>A <a data-aprinote="pg_dm04" href="blocks-and-media.html">page link</a> — carries <code>data-aprinote</code>, and survives renames</li>
+  <li>A <a href="mailto:team@example.com">mail link</a>, and anything else a browser understands</li>
+</ul>
+
+<div class="callout">Select any text and press <code>⌘K</code> to link it. With nothing selected, <code>⌘K</code> is the search palette instead.</div>
+
+<h2>Multi-block selection</h2>
+
+<p>Drag in the left gutter, or across two blocks, to pick whole blocks rather than text. The gutter handle then drags the whole set — and <code>Backspace</code> throws it away in one step. <a data-aprinote="pg_dm04" href="blocks-and-media.html">Blocks &amp; Media</a> has things worth dragging.</p>
+</article></body>
+</html>

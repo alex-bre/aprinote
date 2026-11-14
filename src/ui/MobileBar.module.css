@@ -1,0 +1,57 @@
+.bar {
+  flex: none;
+  border-top: 1px solid var(--line);
+  background: var(--bg-sunken);
+  /* Clears the home indicator on a phone without padding a desktop browser. */
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.scroller {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+/* ≥34px targets — the whole point of a docked bar over a floating one. */
+.btn {
+  flex: none;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 6px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  color: var(--fg-mid);
+}
+.btn:active {
+  background: var(--hover-strong);
+}
+.btn.on {
+  background: var(--accent-wash);
+  color: var(--accent-ink);
+}
+.btn:disabled {
+  color: var(--fg-ghost);
+}
+
+.text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.rule {
+  flex: none;
+  width: 1px;
+  height: 20px;
+  margin: 0 5px;
+  background: var(--line);
+}

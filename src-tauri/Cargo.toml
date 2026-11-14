@@ -1,0 +1,42 @@
+[package]
+name = "aprinote"
+version = "0.0.0"
+description = "An HTML-native note-taking app"
+authors = ["Alexander Brenner"]
+license = "AGPL-3.0-only"
+repository = "https://github.com/alex-bre/aprinote"
+edition = "2021"
+rust-version = "1.77.2"
+
+# The Android build loads the app as a shared library through the generated
+# activity, and the desktop build runs `main.rs`. Both call `run()`.
+[lib]
+name = "aprinote_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+base64 = "0.22"
+thiserror = "2"
+tokio = { version = "1", features = ["sync"] }
+
+# Desktop only, and deliberately: the dialog plugin's folder picker does not
+# exist on mobile, so an Android build that depended on it would be carrying a
+# plugin it cannot call. `vault_env().canPickFolder` is how the frontend knows.
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-dialog = "2"
+
+[profile.release]
+# A note app is not a game: smaller beats faster here, and a smaller .so is a
+# smaller APK on a phone.
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

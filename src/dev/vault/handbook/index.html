@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Handbook</title>
+  <meta name="aprinote-id" content="pg_dm02">
+  <meta name="aprinote-edited" content="2026-09-03T08:40:00Z">
+  <link rel="stylesheet" href="../_vault/site.css">
+</head>
+<body><article class="aprinote-page">
+<h1>Handbook</h1>
+
+<p class="lead">A folder that is also a page. The sidebar shows one row for <code>handbook/</code>, titled from this file — there is no separate “index” child underneath it.</p>
+
+<div class="callout" style="background:#d9efe6">
+  <p><strong>Try it:</strong> rename this row in the sidebar.</p>
+  <p>The <code>&lt;title&gt;</code> and the <code>&lt;h1&gt;</code> change, the folder keeps its name on disk, and every link pointing here keeps working — because links resolve by id, not by path.</p>
+</div>
+
+<h2>In this folder</h2>
+
+<ul>
+  <li><a data-aprinote="pg_dm03" href="writing-and-formatting.html">Writing &amp; Formatting</a> — headings, marks, alignment, lists, colours</li>
+  <li><a data-aprinote="pg_dm04" href="blocks-and-media.html">Blocks &amp; Media</a> — callouts, columns, quotes, code, images, embeds</li>
+</ul>
+
+<h2>Why a folder gets an index page</h2>
+
+<p>A vault is a website. A folder with no <code>index.html</code> is a directory listing when someone points a server at it; a folder with one is a page. The sidebar offers <em>Add index page</em> on any plain folder — <code>reference/</code> is left without one so the affordance has somewhere to land.</p>
+
+<p>How the linking underneath all this works is its own page: <a data-aprinote="pg_dm07" href="../reference/links-and-backlinks.html">Links &amp; Backlinks</a>.</p>
+
+<blockquote>Retitling an index page never renames the folder. That would move every file underneath it, and break every href on the way.</blockquote>
+</article></body>
+</html>
